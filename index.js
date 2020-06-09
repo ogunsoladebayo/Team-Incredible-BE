@@ -7,6 +7,9 @@ const app=express();
 //for cross origin
 app.use(cors());
 
+// set view engine to ejs
+app.set('view engine', 'ejs')
+
 //for accepting json
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -16,7 +19,12 @@ app.use(mainRoute)
 
 //the main page
 app.get('/', (req,res)=>{
-    res.send("first_name:John","last_name:John","email:boyroberto@gmail.com","phone:John,password:emi,cpassword:emi")
+    res.send("first_name:John","last_name:John","email:boyroberto@gmail.com","phone:John,password:emi,cpassword:emi");
+})
+
+// about page
+app.get('/about', (req,res)=>{
+    res.render('pages/about')
 })
 
 //let handle 404 errors
